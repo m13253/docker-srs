@@ -2,7 +2,7 @@
 
 To run SRS:
 ```
-docker run -p 1935 -p 1985 -p 8080 m13253/srs
+docker run -p 1935:1935 -p 1985:1985 -p 8080:8080 m13253/srs
 ```
 TCP port 1935 is an RTMP server, available for pushing & playing;
 TCP port 1985 is an HTTP API server, used to control SRS;
