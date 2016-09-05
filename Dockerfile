@@ -8,10 +8,12 @@ RUN apt-get -y update && \
     cd srs-2.0release/trunk && \
     ./configure && \
     make && \
+    cp conf/srs.conf conf/srs.nofork.conf && \
+    echo 'daemon              off;' >> conf/srs.nofork.conf && \
     rm -rf 3rdparty src doc research && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR ["/opt/srs-2.0release"]
 EXPOSE 1935 1985 8080
-ENTRYPOINT ["./objs/srs", "-c", "./conf/srs.conf"]
+ENTRYPOINT ["./objs/srs", "-c", "./conf/srs.nofork.conf"]
