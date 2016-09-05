@@ -1,7 +1,6 @@
 FROM ubuntu:12.04
 MAINTAINER Star Brilliant <m13253@hotmail.com>
 
-COPY srs.conf /opt/srs-2.0release/trunk/conf/docker.conf
 RUN apt-get -y update && \
     apt-get -y install curl python sudo && \
     cd /opt && \
@@ -13,6 +12,7 @@ RUN apt-get -y update && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR "/opt/srs-2.0release/trunk"
 EXPOSE 1935 1985 8080
+COPY srs.conf /opt/srs-2.0release/trunk/conf/docker.conf
+WORKDIR "/opt/srs-2.0release/trunk"
 ENTRYPOINT ["./objs/srs", "-c", "./conf/docker.conf"]
