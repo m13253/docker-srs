@@ -8,4 +8,4 @@ TCP port 1935 is an RTMP server, available for pushing & playing;
 TCP port 1985 is an HTTP API server, used to control SRS;
 TCP port 8080 is an HTTP server, available for playing.
 
-The default [srs.conf](https://github.com/ossrs/srs/blob/2.0release/trunk/conf/srs.conf) will be used. If you want to customize your SRS application, feel free to base your Dockerfile on mine.
+A [patched version](https://github.com/m13253/docker-srs/blob/master/srs.conf) of  [srs.conf](https://github.com/ossrs/srs/blob/2.0release/trunk/conf/srs.conf) will be used. If you want to customize your SRS application, feel free to base your Dockerfile on mine.
