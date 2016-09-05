@@ -8,7 +8,7 @@ RUN apt-get -y update && \
     cd srs-2.0release/trunk && \
     ./configure && \
     make && \
-    rm -rf 3rdparty src doc research && \
+    rm -rf 3rdparty doc && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
