@@ -14,6 +14,6 @@ RUN apt-get -y update && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR ["/opt/srs-2.0release"]
+WORKDIR "/opt/srs-2.0release/trunk"
 EXPOSE 1935 1985 8080
 ENTRYPOINT ["./objs/srs", "-c", "./conf/srs.nofork.conf"]
