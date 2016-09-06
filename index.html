@@ -3,9 +3,26 @@
 <head>
 <meta charset="UTF-8" />
 <title>SRS livestream demo</title>
+<style>
+html, body {
+   width: 100%;
+   height: 100%;
+   margin: 0px;
+   overflow: hidden;
+}
+#player {
+   width: 100%;
+   height: 100%;
+   margin: auto;
+}
+</style>
 </head>
 <body style="margin: 0px; background-color: black; overflow: hidden">
-<video style="width: 100vw; height: 100vh" autoplay="autoplay" controls="controls" src="live/livestream.m3u8"></video>
+<div id="player"></div>
+<script src="jwplayer.js"></script>
+<script language="javascript">
+jwplayer("player").setup({file: "live/livestream.m3u8", height: "100%", width: "100%"});
+</script>
 <!--
   Push your stream to:
   URL:        rtmp://localhost:1935/live
