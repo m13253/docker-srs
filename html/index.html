@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>SRS livestream demo</title>
+<link href="video-js@5.0.css" rel="stylesheet" />
 <style>
 html, body {
    width: 100%;
@@ -17,37 +18,13 @@ html, body {
 </style>
 </head>
 <body style="margin: 0px; background-color: black; overflow: hidden">
-<video id="player" controls="controls"></div>
-<script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
+<video id="player" class="video-js vjs-default-skin" controls="controls">
+  <source src="live/livestream.m3u8" type="application/x-mpegURL" />
+</video>
+<script src="video-js@5.11.6.js"></script>
+<script src="videojs-contrib-hls@1.0.3.js"></script>
 <script language="javascript">
-if (Hls.isSupported()) {
-  var video = document.getElementById("player");
-  var hls = new Hls();
-  hls.attachMedia(video);
-  hls.on(Hls.Events.MEDIA_ATTACHED, function () {
-    hls.loadSource("live/livestream.m3u8");
-    hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
-      video.play();
-    });
-  });
-  hls.on(Hls.Events.ERROR, function (event, data) {
-    if(data.fatal) {
-      switch(data.type) {
-      case Hls.ErrorTypes.NETWORK_ERROR:
-        console.log("fatal network error encountered, try to recover");
-        hls.startLoad();
-        break;
-      case Hls.ErrorTypes.MEDIA_ERROR:
-        console.log("fatal media error encountered, try to recover");
-        hls.recoverMediaError();
-        break;
-      default:
-        hls.destroy();
-        break;
-      }
-    }
-  });
-}
+var player = videojs("player", {autoplay: true});
 </script>
 <!--
   Push your stream to:
