@@ -2,7 +2,7 @@ FROM ubuntu:12.04
 MAINTAINER Star Brilliant <m13253@hotmail.com>
 
 RUN apt-get -y update && \
-    apt-get -y install curl python sudo && \
+    apt-get -y install curl expect python sudo vim-tiny && \
     cd /opt && \
     curl -C - -L -s https://github.com/ossrs/srs/archive/2.0release.tar.gz | tar xzv && \
     cd srs-2.0release/trunk && \
@@ -14,5 +14,5 @@ RUN apt-get -y update && \
 
 EXPOSE 1935 1985 8080
 COPY srs.conf /opt/srs-2.0release/trunk/conf/docker.conf
-WORKDIR "/opt/srs-2.0release/trunk"
-ENTRYPOINT ["./objs/srs", "-c", "./conf/docker.conf"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
