@@ -1,4 +1,5 @@
 :8080
 gzip
 log stdout
+proxy /live localhost:8079
 tls off
