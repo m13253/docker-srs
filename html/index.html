@@ -25,8 +25,9 @@ html, body {
 <script src="video-js@5.11.6.js"></script>
 <script src="videojs-contrib-hls@1.0.3.js"></script>
 <script language="javascript">
-if(location.hash) {
-    document.getElementById("player").getElementsByTagName("source")[0].src = "live/" + location.href + ".m3u8";
+var hash = location.hash.substr(1);
+if(hash) {
+    document.getElementById("player").getElementsByTagName("source")[0].src = "live/" + hash + ".m3u8";
 }
 var player = videojs("player", {autoplay: true});
 </script>
