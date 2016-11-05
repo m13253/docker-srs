@@ -24,7 +24,7 @@ html, body {
 var player = document.getElementById("player");
 var flvPlayer = flvjs.createPlayer({
     type: "flv",
-    url: "live/" + (location.hash || "livestream") + ".flv",
+    url: "live/" + (location.hash.substr(1) || "livestream") + ".flv",
     isLive: true
 });
 flvPlayer.attachMediaElement(player);
