@@ -21,11 +21,13 @@ html, body {
 <video id="player" controls="controls"></video>
 <script src="flv@1.0.0.js"></script>
 <script language="javascript">
+var player = document.getElementById("player");
 var flvPlayer = flvjs.createPlayer({
     type: "flv",
-    url: "live/livestream.flv"
+    url: "live/livestream.flv",
+    isLive: true
 });
-flvPlayer.attachMediaElement(document.getElementById("player"));
+flvPlayer.attachMediaElement(player);
 function onError() {
     setTimeout(function onTimeout() {
         flvPlayer.unload();
@@ -34,7 +36,7 @@ function onError() {
     }, 3000);
 }
 flvPlayer.on("error", onError);
-flvPlayer.on("recovered_early_eof", onError);
+player.addEventListener("ended", onError);
 flvPlayer.load();
 flvPlayer.play();
 </script>
