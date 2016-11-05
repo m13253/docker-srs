@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <title>SRS livestream demo</title>
 <meta name="robots" content="noindex" />
-<link href="video-js@5.0.css" rel="stylesheet" />
 <style>
 html, body {
    width: 100%;
@@ -19,19 +18,27 @@ html, body {
 </style>
 </head>
 <body style="margin: 0px; background-color: black; overflow: hidden">
-<video id="player" class="video-js vjs-default-skin" controls="controls">
-  <source src="live/livestream.m3u8" type="application/x-mpegURL" />
-</video>
-<script src="video-js@5.11.6.js"></script>
-<script src="videojs-contrib-hls@1.0.3.js"></script>
+<video id="player" controls="controls"></video>
+<script src="flv@1.0.0.js"></script>
 <script language="javascript">
-var player = videojs("player", {autoplay: true});
+var flvPlayer = flvjs.createPlayer({
+    type: "flv",
+    url: "live/livestream.flv"
+});
+flvPlayer.attachMediaElement(document.getElementById("player"));
+flvPlayer.load();
+flvPlayer.play();
 </script>
 <!--
   This is a demo page of SRS livestream server.
   Push your stream to:
   URL:        rtmp://localhost:1935/live
   Stream key: livestream
+
+  Playback URLS:
+  RTMP: rtmp://localhost:1935/live
+  HLS:  http://localhost:1935/live.m3u8
+  FLV:  http://localhost:1935/live.flv
 -->
 </body>
 </html>

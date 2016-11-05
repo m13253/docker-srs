@@ -7,7 +7,7 @@ docker run -p 1935:1935 -p 1985:1985 -p 8080:8080 m13253/srs
 TCP port 1935 is an RTMP server, available for pushing & playing;
 TCP port 8080 is an HTTP server, available for playing.
 
-This branch is a demo application for HLS streaming.
+This branch is a demo application for FLV streaming.
 
 Push your stream to:
 ```
