@@ -26,6 +26,15 @@ var flvPlayer = flvjs.createPlayer({
     url: "live/livestream.flv"
 });
 flvPlayer.attachMediaElement(document.getElementById("player"));
+function onError() {
+    setTimeout(function onTimeout() {
+        flvPlayer.unload();
+        flvPlayer.load();
+        flvPlayer.play();
+    }, 3000);
+}
+flvPlayer.on("error", onError);
+flvPlayer.on("recovered_early_eof", onError);
 flvPlayer.load();
 flvPlayer.play();
 </script>
